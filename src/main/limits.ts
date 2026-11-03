@@ -1,6 +1,6 @@
 import { spawn } from 'node:child_process';
-import { tmpdir } from 'node:os';
 import type { ClaudeStatus, LimitWindow, UsageLimits } from '@shared/types';
+import { privateWorkDir } from './data-dir';
 
 const PROBE_MS = 5 * 60_000;
 const PROBE_NEAR_MS = 2 * 60_000;
@@ -36,7 +36,7 @@ export function noteRateLimit(info: any): void {
 function probe(claudePath: string): Promise<void> {
   return new Promise((done) => {
     const args = ['-p', '--setting-sources', '', '--strict-mcp-config', '--disable-slash-commands', '--system-prompt', 'Reply ok.', '--tools', '', '--no-session-persistence', '--model', 'haiku', '--effort', 'low', '--output-format', 'stream-json', '--verbose'];
-    const child = spawn(claudePath, args, { cwd: tmpdir(), stdio: ['pipe', 'pipe', 'ignore'], shell: process.platform === 'win32', env: process.env });
+    const child = spawn(claudePath, args, { cwd: privateWorkDir(), stdio: ['pipe', 'pipe', 'ignore'], shell: process.platform === 'win32', env: process.env });
     const guard = setTimeout(() => child.kill(), PROBE_TIMEOUT_MS);
     let buffer = '';
     child.stdout?.setEncoding('utf8');

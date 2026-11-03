@@ -242,12 +242,17 @@ const LINUX_TERMINALS: LinuxTerminal[] = [
 export async function openTerminal(path: string, exec?: string[]): Promise<void> {
   if (process.platform === 'darwin') {
     if (!exec) return launch('open', ['-a', 'Terminal', path]);
-    const script = `tell application "Terminal" to do script "cd ${shellQuote(path)} && ${exec.map(shellQuote).join(' ')}"`;
-    return launch('osascript', ['-e', script]);
+    const command = `cd ${shellQuote(path)} && ${exec.map(shellQuote).join(' ')}`;
+    return launch('osascript', ['-e', 'on run argv', '-e', 'tell application "Terminal" to do script (item 1 of argv)', '-e', 'end run', command]);
   }
   if (process.platform === 'win32') {
-    if (await which('wt')) return launch('wt', ['-d', path, ...(exec ?? [])]);
-    return launch('cmd.exe', ['/c', 'start', 'cmd.exe', exec ? '/k' : '/k', ...(exec ?? [])], path);
+    if (await which('wt')) {
+      const unsafe = [path, ...(exec ?? [])].find((arg) => arg.includes(';'));
+      if (unsafe) throw new Error(`Chemin non pris en charge par Windows Terminal : ${unsafe}`);
+      return launch('wt', ['-d', path, ...(exec ?? [])]);
+    }
+    exec?.forEach(quoteForCmd);
+    return launch('cmd.exe', ['/c', 'start', 'cmd.exe', '/k', ...(exec ?? [])], path);
   }
   for (const term of LINUX_TERMINALS) {
     const bin = await which(term.bin);
@@ -257,5 +262,5 @@ export async function openTerminal(path: string, exec?: string[]): Promise<void>
 }
 
 function shellQuote(value: string): string {
-  return `'${value.replaceAll("'", "'\\''").replaceAll('"', '\\"')}'`;
+  return `'${value.replaceAll("'", "'\\''")}'`;
 }

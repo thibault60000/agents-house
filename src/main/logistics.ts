@@ -1,11 +1,12 @@
 import { execFile, spawn } from 'node:child_process';
 import { promises as fs } from 'node:fs';
-import { homedir, tmpdir } from 'node:os';
+import { homedir } from 'node:os';
 import { basename, join, relative } from 'node:path';
 import { Worker } from 'node:worker_threads';
 import { app, shell } from 'electron';
 import type { ArtifactEntry, CatalogEntry, CatalogFile, LogisticsData, Project, ScheduledItem, UsageReport } from '@shared/types';
 import { claudeStatus } from './agents';
+import { privateWorkDir } from './data-dir';
 import { store } from './store';
 import workerPath from './usage-worker?modulePath';
 
@@ -324,8 +325,8 @@ async function fetchArtifacts(claudePath: string): Promise<ArtifactEntry[]> {
   const stdout = await new Promise<string>((resolve, reject) => {
     const child = spawn(
       claudePath,
-      ['-p', '--model', 'claude-haiku-5-5', '--output-format', 'json', '--allowedTools', 'Artifact,ToolSearch', '--permission-mode', 'dontAsk'],
-      { cwd: tmpdir(), stdio: ['pipe', 'pipe', 'ignore'], shell: process.platform === 'win32' },
+      ['-p', '--model', 'claude-haiku-5-5', '--output-format', 'json', '--allowedTools', 'Artifact,ToolSearch', '--permission-mode', 'dontAsk', '--setting-sources', 'user'],
+      { cwd: privateWorkDir(), stdio: ['pipe', 'pipe', 'ignore'], shell: process.platform === 'win32' },
     );
     let buffer = '';
     const timer = setTimeout(() => {
