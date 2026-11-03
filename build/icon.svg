@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="sky" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#8DB4FF"/>
+      <stop offset="1" stop-color="#4C5FE0"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9BE38F"/>
+      <stop offset="1" stop-color="#5FBF74"/>
+    </linearGradient>
+    <linearGradient id="wallLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFF8EC"/>
+      <stop offset="1" stop-color="#FBE9D2"/>
+    </linearGradient>
+    <linearGradient id="wallRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EBCFB2"/>
+      <stop offset="1" stop-color="#D4B296"/>
+    </linearGradient>
+    <linearGradient id="roofLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FF9A6E"/>
+      <stop offset="1" stop-color="#F2734C"/>
+    </linearGradient>
+    <linearGradient id="roofRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E5643F"/>
+      <stop offset="1" stop-color="#C24C31"/>
+    </linearGradient>
+    <linearGradient id="pane" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFE9A0"/>
+      <stop offset="1" stop-color="#FFC24D"/>
+    </linearGradient>
+    <radialGradient id="body" cx="0.38" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#6FE3DA"/>
+      <stop offset="1" stop-color="#1FA6B8"/>
+    </radialGradient>
+    <radialGradient id="bulb" cx="0.38" cy="0.32" r="0.72">
+      <stop offset="0" stop-color="#FFF4B8"/>
+      <stop offset="1" stop-color="#FFC533"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+    <filter id="tile" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#10143C" flood-opacity="0.32"/>
+    </filter>
+    <clipPath id="tileClip">
+      <rect x="72" y="64" width="880" height="880" rx="204"/>
+    </clipPath>
+  </defs>
+
+  <rect x="72" y="64" width="880" height="880" rx="204" fill="url(#sky)" filter="url(#tile)"/>
+
+  <g clip-path="url(#tileClip)">
+    <rect x="72" y="64" width="880" height="420" fill="url(#sheen)"/>
+
+    <g transform="translate(512 500) scale(0.95) translate(-512 -520)">
+
+    <path d="M512 912 874 731 874 771 512 952 150 771 150 731Z" fill="#3F9A5E"/>
+    <path d="M512 550 874 731 512 912 150 731Z" fill="url(#grass)" stroke="url(#grass)" stroke-width="10" stroke-linejoin="round"/>
+
+    <ellipse cx="520" cy="770" rx="240" ry="96" fill="#1C5C3E" opacity="0.34" filter="url(#soft)"/>
+
+    <path d="M322 452 512 547 512 757 322 662Z" fill="url(#wallLeft)" stroke="url(#wallLeft)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M702 452 512 547 512 757 702 662Z" fill="url(#wallRight)" stroke="url(#wallRight)" stroke-width="6" stroke-linejoin="round"/>
+
+    <path d="M558 590 656 541 656 646 558 695Z" fill="#FFD36B" opacity="0.75" filter="url(#glow)"/>
+    <path d="M558 590 656 541 656 646 558 695Z" fill="url(#pane)" stroke="#8C5A3C" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M607 566V671M558 642 656 593" stroke="#8C5A3C" stroke-width="9" fill="none"/>
+
+    <path d="M272 452 512 572 512 196Z" fill="url(#roofLeft)" stroke="url(#roofLeft)" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M752 452 512 572 512 196Z" fill="url(#roofRight)" stroke="url(#roofRight)" stroke-width="14" stroke-linejoin="round"/>
+
+    <ellipse cx="396" cy="812" rx="118" ry="34" fill="#1C5C3E" opacity="0.42" filter="url(#soft)"/>
+
+    <path d="M398 590C392 556 402 524 424 492" stroke="#14707F" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <circle cx="430" cy="480" r="48" fill="#FFD84D" opacity="0.6" filter="url(#glow)"/>
+    <circle cx="430" cy="480" r="35" fill="url(#bulb)"/>
+
+    <ellipse cx="396" cy="700" rx="124" ry="120" fill="url(#body)"/>
+
+    <ellipse cx="346" cy="686" rx="42" ry="48" fill="#FFFFFF"/>
+    <ellipse cx="446" cy="686" rx="42" ry="48" fill="#FFFFFF"/>
+    <circle cx="356" cy="692" r="25" fill="#171A33"/>
+    <circle cx="456" cy="692" r="25" fill="#171A33"/>
+    <circle cx="365" cy="682" r="8" fill="#FFFFFF"/>
+    <circle cx="465" cy="682" r="8" fill="#FFFFFF"/>
+    <path d="M372 760C386 776 412 776 426 760" stroke="#0E5F6E" stroke-width="11" stroke-linecap="round" fill="none"/>
+    </g>
+  </g>
+</svg>
