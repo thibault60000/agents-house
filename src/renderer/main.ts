@@ -9,4 +9,4 @@ import App from './ui/App.svelte';
 const target = document.getElementById('app');
 if (!target) throw new Error('#app introuvable');
 if (window.house) mount(App, { target });
-else target.textContent = "Cette page s'ouvre dans l'application Maison des Agents.";
+else target.textContent = "Cette page s'ouvre dans l'application Agents House.";

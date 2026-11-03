@@ -1,7 +1,7 @@
 {
   "name": "maison-des-agents",
-  "productName": "Maison des Agents",
-  "version": "0.1.1",
+  "productName": "Agents House",
+  "version": "0.1.2",
   "description": "Une maison isométrique 3D où chaque projet local est une pièce habitée par un agent qui pilote Claude Code.",
   "homepage": "https://github.com/thibault60000/agents-house",
   "author": {

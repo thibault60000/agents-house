@@ -318,5 +318,5 @@ function notifyIfNeeded(event: Parameters<Parameters<typeof agents.initAgents>[0
   const { task } = event;
   if (task.status === 'cancelled') return;
   const project = findProject(task.projectId);
-  notifyHandler(project?.name ?? 'Maison des Agents', task.progress, task.projectId, task.id);
+  notifyHandler(project?.name ?? 'Agents House', task.progress, task.projectId, task.id);
 }

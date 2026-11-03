@@ -1,3 +1,4 @@
+import './data-dir';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { app, BrowserWindow, Notification, session, shell, type BrowserWindowConstructorOptions } from 'electron';
@@ -31,7 +32,7 @@ function createWindow(): BrowserWindow {
     minHeight: 600,
     show: false,
     backgroundColor: '#f2cfba',
-    title: 'Maison des Agents',
+    title: 'Agents House',
     ...platformWindowOptions(),
     webPreferences: {
       preload: join(here, '../preload/index.cjs'),

@@ -4,7 +4,7 @@
 
   const houseName = $derived.by(() => {
     const root = ui.app?.rootPath;
-    return root ? (root.split(/[\\/]/).filter(Boolean).pop() ?? 'Maison') : 'Maison des Agents';
+    return root ? (root.split(/[\\/]/).filter(Boolean).pop() ?? 'Maison') : 'Agents House';
   });
   const isMac = $derived(ui.app?.platform === 'darwin');
   const running = $derived(ui.tasks.filter((t) => t.status === 'running' || t.status === 'queued').length);

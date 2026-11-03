@@ -1,5 +1,5 @@
 appId: dev.thibault.maison-des-agents
-productName: Maison des Agents
+productName: Agents House
 directories:
   output: release
   buildResources: build

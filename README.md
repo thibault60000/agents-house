@@ -1,8 +1,23 @@
-# Maison des Agents
+# Agents House
 
 Electron desktop app: an isometric 3D house where each local project is a room, inhabited by a small agent that drives Claude Code in the project folder.
 
 The interface is in French.
+
+## Screenshots
+
+These screenshots use sample data: the projects and conversations shown are fictional.
+
+![The house, with one room per project](docs/screenshots/house.jpg)
+
+| | |
+|---|---|
+| ![Night mode](docs/screenshots/night.jpg) | ![Chat with a project's agent](docs/screenshots/chat.jpg) |
+| **Night mode** | **Agent chat**, with model and effort selection |
+| ![Usage by model in the garage](docs/screenshots/garage.jpg) | ![Skills, commands and tools across projects](docs/screenshots/logistics.jpg) |
+| **Garage**: usage by model | **Logistics**: skills, commands, agents and MCP servers |
+| ![Past Claude Code and Claude Desktop conversations](docs/screenshots/history.jpg) | ![Settings](docs/screenshots/settings.jpg) |
+| **Conversations**: past Claude Code and Claude Desktop sessions | **Settings** |
 
 ## Install on Ubuntu
 
